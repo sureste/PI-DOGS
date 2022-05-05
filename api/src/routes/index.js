@@ -6,6 +6,7 @@ const { Dogs , Moods } = require('../db')
 const Op = Sequelize.Op
 
 const axios = require('axios');
+const e = require('express');
 const router = Router();
 const {API_KEY} = process.env
 
@@ -79,7 +80,9 @@ const getAllDogs = async () => {
             name : e.name,
             mood : e.temperament,
             weight : e.weight.metric,
-            id : e.id
+            height : e.height.metric,
+            id : e.id,
+            lifeTime : e.life_span
         }
              })
         let perrosDb = await Dogs.findAll({
@@ -115,19 +118,18 @@ const getAllDogs = async () => {
 
 
 
-const getDog = async (idRaza) => {
+const getDog = async (id) => {
+    let dogs = await getAllDogs()
 
-    let dogs = await getAllDogs();
+    let foundDog = await dogs.find(d => d.id === parseInt(id))
+    console.log(foundDog)
+    if(!foundDog){
+        throw Error("No hay guau guau api")
+    }
 
+ return foundDog
 
-    // let dog = await 
-    let dog = await dogs.find(d => d.id === idRaza)
-
-        if(!dog){
-            throw Error("Guau Guau no encontrado")
-        }
     
-    return dog
 }
 
 const getMood = async () => {
@@ -191,7 +193,7 @@ const getMood = async () => {
             })
             console.log(moods, "====el mood buscado===")
             let moods2 = moods.map(e => e.id);
-            console.log(moods2)
+            console.log(moods2 , "==esto es el moods2=")
             newDog.addMoods(moods2)
             console.log('====================')
             return "Perro creado con exito, AUUUUUUUUUUUU "
@@ -207,10 +209,10 @@ router.get('/temperament', async(req,res) => {
     try{
         let a = await getMood()
     res.status(200).json(a)
-
-    }catch(err){
-        res.status(404).send('Toy malito')
-    }
+    
+}catch(err){
+    res.status(404).send('Toy malito')
+}
 })
 
 
@@ -218,27 +220,9 @@ router.get('/temperament', async(req,res) => {
 
 
 router.get('/dogs', async(req,res) => {
-    let {idRaza} = req.body
+    // let {id} = req.params
     let{name} = req.query
     try {
-        if(idRaza && name){
-            return res.status(400).send("Ingresar solo un valor de busqueda , GRRRRR")
-        }
-        if(idRaza){
-            if(idRaza.length > 5){
-                //a esta le faltan corregirle errores
-            let dbDog = await DbDogId(idRaza)
-                if(!dbDog){
-                    return res.status(404).send("No hay guau guau")
-                }
-             return res.status(200).json(dbDog)
-                } 
-            let dog = await getDog(idRaza)
-                if(!dog){
-                    return res.status(404).send("Aqui tampoco hubo guau guau")
-                }
-            return res.status(200).json(dog)
-        }
         
         if(name){
             
@@ -250,30 +234,47 @@ router.get('/dogs', async(req,res) => {
                 if(!search.length){
                     return res.status(404).send("No hay woof woof sniff sniff pffft")
                 }
-            return res.status(200).json(search)
-            //     console.log("pan")
-            //     return res.status(404).send("No hay guau guau")
-            // }
-            // if (search || searchApi){
-                // return res.status(200).json(searchApi || search)
-            // }
-            
+                return res.status(200).json(search)         
+                }
+                
+                //el get de todos los perros ya completo, faltan detalles
+                // let perrosApi = await getApiDogs()
+                // let perrosDb = await getDbDogs()
+                let perros = await getAllDogs() 
+                
+                return res.status(200).json(perros)
+                
+                
+            } catch (error) {
+                res.status(404).send({error : error.message})
+            }
+        })
 
-        }
-        
-        //el get de todos los perros ya completo, faltan detalles
-        // let perrosApi = await getApiDogs()
-        // let perrosDb = await getDbDogs()
-        let perros = await getAllDogs() 
-       
-        return res.status(200).json(perros)
-        
-        
-    } catch (error) {
-        res.status(404).send({error : error.message})
-    }
-})
 
+        router.get("/dogs/:id", async(req,res) => {
+            let {id} = req.params
+
+            //cuando metes algo no tomado como valido de id UUID manda un error y ta bien pero 
+            //podrías ver como controlarlo para mayor control sobre la pagina
+
+            try {
+                   if (id.length > 5) {
+                        let dbDog = await DbDogId(id)
+                        return res.status(200).json(dbDog)
+                    }
+
+                    let foundDog = await getDog(id)
+                    // console.log(foundDog, "aquitoy")
+                    return res.status(200).json(foundDog)
+                
+            } catch (error) {
+             return res.status(404).send({Error : error.message})   
+            }
+            })
+        
+
+    
+    
 router.post("/dogs", async(req,res) => {
     // try{
         let {

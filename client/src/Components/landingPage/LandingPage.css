@@ -1,0 +1,16 @@
+
+body{
+    background-image: url('https: //www.cdc.gov/healthypets/images/pets/cute-dog-headshot.jpg?_=42445');
+}
+
+.back_ground{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 40px;
+    background-color: rgb(117, 117, 128);
+}
+
+.style{
+    color:red
+}

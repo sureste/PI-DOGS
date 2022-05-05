@@ -31,9 +31,13 @@ module.exports = (sequelize) => {
 
     lifeTime: {
       type: DataTypes.INTEGER
-}
+},
 
-  // createdInDb = datatypes.boolean
+  createdInDb : {
+   type:  DataTypes.BOOLEAN,
+   allowNull : false,
+   defaultValue : true
+  }
   },
   {timestamps : false} 
   );
