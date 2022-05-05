@@ -1,7 +1,16 @@
 
-body{
-    background-image: url('https: //www.cdc.gov/healthypets/images/pets/cute-dog-headshot.jpg?_=42445');
+.back_image{
+    width: 100%;
+    /* background-image: url('https://images3.alphacoders.com/216/thumb-1920-216167.jpg');     */
+    background-image: url('https://www.xtrafondos.com/wallpapers/resized/gato-sorprendido-9039.jpg?s=large');    
+    background-position: center center;
+    background-size: cover;
+    height: 97vh;
+    width: 100vw;
 }
+
+
+
 
 .back_ground{
     position: absolute;

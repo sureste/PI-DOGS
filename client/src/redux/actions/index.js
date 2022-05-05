@@ -7,7 +7,9 @@ export const GET_DOG_NAME = "GET_DOG_NAME"
 export const FILTER_BY_MOOD = "FILTER_BY_MOOD"
 export const FILTER_ABC = 'FILTER_ABC'
 export const FILTER_CREATED_DOG = "FILTER_CREATED_DOG"
-
+export const FILTER_BY_WEIGHT = 'FILTER_BY_WEIGHT'
+export const GET_ALL_MOODS = "GET_ALL_MOODS"
+export const FILTER_BY_MOODS = 'FILTER_BY_MOODS'
 
 
 
@@ -52,7 +54,7 @@ export const getAllDogs = () => {
         }
     }
 
-    export const filterByMood = (payload) =>  {
+    export const filterByMoods = (payload) =>  {
         return {
             type : FILTER_BY_MOOD,
             payload
@@ -67,6 +69,13 @@ export const getAllDogs = () => {
         }
     }
 
+    export const filterByWeight = (payload) => {
+        return {
+            type : FILTER_BY_WEIGHT,
+            payload
+        }
+    }
+
     export const filterCreatedDog = (payload) => {
         console.log(payload)
         return {
@@ -74,3 +83,19 @@ export const getAllDogs = () => {
             payload
         }
     }
+
+
+    export const getMoods = () => {
+        return async function (dispatch) {
+            let json = await axios('http://localhost:3001/temperament')
+
+            const payload = await json.data
+            return dispatch({
+                type: GET_ALL_MOODS,
+                payload
+            })
+        }
+
+    }
+
+

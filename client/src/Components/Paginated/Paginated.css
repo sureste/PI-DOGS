@@ -1,0 +1,24 @@
+.back{
+
+    background-color: brown;
+}
+
+.ul {
+    list-style-type: none;
+    overflow: hidden;
+}
+
+
+.list {
+    display: inline-flex;
+}
+.list>button {
+   
+    padding: 0.5rem;
+    margin-right: 0.2rem;
+    margin-left: 0.2rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    width: 2.5rem;
+    background-color: white;
+}

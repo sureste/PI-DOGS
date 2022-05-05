@@ -20,17 +20,21 @@ module.exports = (sequelize) => {
 
 
     height: {
-      type : DataTypes.DECIMAL,
+      type : DataTypes.INTEGER,
       allowNull : false
     },
 
-    weight: {
-      type: DataTypes.DECIMAL,
+    weight_min: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+},
+    weight_max: {
+      type: DataTypes.INTEGER,
       allowNull: false
 },
 
     lifeTime: {
-      type: DataTypes.INTEGER
+      type: DataTypes.DECIMAL
 },
 
   createdInDb : {

@@ -16,12 +16,13 @@ const DogDetail = (props) => {
 
         return(
             <div>
-            <h1>{dog.name}</h1>
-            <h2>{dog.mood}</h2>
+            <h1>name :{dog.name}</h1>
+            <h2>Moods :{dog.mood}</h2>
             <img src={dog.image} alt="woof" width="50%" height="50%" />
-            <h3>{dog.height}</h3>
-            <h4>{dog.weight}</h4>
-            <h4>{dog.lifeTime}</h4>
+            <h3> Height :{dog.height}</h3>
+            <h4> Weight min :{dog.weight_min}</h4>
+            <h4> Weight max :{dog.weight_max}</h4>
+            <h4>Life years :{dog.lifeTime}</h4>
 
         </div>
     )

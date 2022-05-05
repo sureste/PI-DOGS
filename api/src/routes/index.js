@@ -73,14 +73,15 @@ const DbDogId = async (id) => {
 
 const getAllDogs = async () => {
 
-    const api = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
-    const perrosApi = await api.data.map(e => {
+    const api = await axios.get(`https://api.thedogapi.com/v1/breeds`);
+    const perrosApi = api.data.map(e => {
         return {
             image : e.image.url,
             name : e.name,
             mood : e.temperament,
-            weight : e.weight.metric,
-            height : e.height.metric,
+            weight_min : parseInt(e.weight.imperial.split("-")[0]),
+            weight_max : parseInt(e.weight.imperial.split("-")[1]),
+            height: e.height.imperial,
             id : e.id,
             lifeTime : e.life_span
         }
@@ -169,7 +170,7 @@ const getMood = async () => {
         
     }
     
-    const createDog = async (name,height,weight,lifeTime,mood) => {
+    const createDog = async (name,height,weight_min,weight_max,lifeTime,mood) => {
     try {
     //     const search = await Dogs.findOne({
     //         where : {name : name}})
@@ -184,7 +185,8 @@ const getMood = async () => {
             where : {
                 name,
                 height,
-                weight,
+                weight_min,
+                weight_max,
                 lifeTime
             }})
             console.log("WOOF WOOF WOOF WOOF WOOF",created) //regresar un 304 si ya estaba creado
@@ -280,7 +282,8 @@ router.post("/dogs", async(req,res) => {
         let {
             name,
             height,
-            weight,
+            weight_min,
+            weight_max,
             lifeTime,
             mood} = req.body
     const search = await Dogs.findOne({
@@ -290,7 +293,7 @@ router.post("/dogs", async(req,res) => {
         // console.log(search)
         return res.send("ya hay guau guau").status(304)
     }
-            createDog(name,height,weight,lifeTime,mood)
+            createDog(name,height,weight_min,weight_max,lifeTime,mood)
             
             return res.status(201).send("Guau guau creado con croquetas")
             

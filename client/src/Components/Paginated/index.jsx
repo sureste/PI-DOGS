@@ -1,5 +1,5 @@
 import React from "react";
-
+import '../Paginated/Paginated.css'
 
 export default function Paginated({currentDogs, allDogs, paginated}){
 
@@ -10,10 +10,11 @@ export default function Paginated({currentDogs, allDogs, paginated}){
     }
     console.log(pages, "soy pages")
     return (
-        <nav>
+
+        <nav className="back" >
         <ul>
            {pages?.map( (n) => (
-               <li key={n}>
+               <li key={n} className="list">
                 <button onClick={() => paginated(n)}>{n} </button>       
                 </li>
            ))} 

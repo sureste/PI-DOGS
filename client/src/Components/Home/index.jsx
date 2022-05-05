@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import {useDispatch, useSelector} from 'react-redux'
-import { getAllDogs, filterAbc, filterCreatedDog } from "../../redux/actions";
+import { getAllDogs, filterAbc, filterCreatedDog, getMoods, filterByMoods, filterByWeight } from "../../redux/actions";
 import Card from '../dogCard'
 import Paginated from "../Paginated";
 import '../Home/Home.css'
@@ -37,6 +37,25 @@ const Home = () => {
         dispatch(filterCreatedDog(e.target.value))
     }
 
+    const handleWeightFilter = (e) => {
+        e.preventDefault()
+        dispatch( filterByWeight(e.target.value))
+        setCurrentPage(1)
+        setOrder(e.target.value)
+    }
+    
+    useEffect(() => {
+        dispatch(getMoods())
+    },[dispatch])
+
+    const moodsName = useSelector(state => { return state.allMoods})
+
+
+    const handleMoodFilter = (e) => {
+        e.preventDefault()
+        dispatch(filterByMoods(e.target.value))
+    }
+
     return (
         <div>    
         <h1 className=" backGround ">
@@ -61,6 +80,28 @@ const Home = () => {
                 <option value='api'>Api</option>
             </select>
 
+            <label>MOOOOOOODS</label>
+
+            <select onChange={e => handleMoodFilter(e)}>
+                <option value="all">protomood</option>
+                {
+                    moodsName.map(e => {
+                        
+                    return (
+                        <option value={e.name} key={e.id}>{e.name}</option>
+                    )
+                    })
+                }
+            </select>
+
+                <label>Weight</label>
+
+                <select onChange={e => handleWeightFilter(e) }>
+                    <option value='all'>All</option>
+                    <option value='min'>Ligero a pesao</option>
+                    <option value='max'> Pesao a ligero</option>
+                </select>
+
         </div>
 
             <div>
@@ -71,7 +112,7 @@ const Home = () => {
                        return( 
                            
                         <div>
-                         <Card name={e.name} image={e.image} mood={e.mood} id={e.id} weight={e.weight} key={e.id} />
+                         <Card name={e.name} image={e.image} mood={e.mood} id={e.id} weight_min={e.weight_min} weight_max={e.weight_max} key={e.id} />
                         </div>
                         
                         )})
