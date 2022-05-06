@@ -1,6 +1,6 @@
 .back{
 
-    background-color: brown;
+    background-color: rgba(1, 0, 0, 0.694);
 }
 
 .ul {
@@ -11,14 +11,32 @@
 
 .list {
     display: inline-flex;
+    
 }
-.list>button {
-   
-    padding: 0.5rem;
-    margin-right: 0.2rem;
-    margin-left: 0.2rem;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-    width: 2.5rem;
-    background-color: white;
+.list > button {
+    box-shadow: inset 0px 0px 0px 0px #f7c5c0;
+    background: linear-gradient(to bottom, #fc8d83 5%, #e4685d 100%);
+    background-color: #fc8d83;
+    border-radius: 6px;
+    border: 1px solid #d83526;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 6px 10px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #b23e35;
+}
+
+.list > button:hover {
+    background: linear-gradient(to bottom, #e4685d 5%, #fc8d83 100%);
+    background-color: #e4685d;
+}
+
+.list > button:active {
+    position: relative;
+    top: 1px;
 }

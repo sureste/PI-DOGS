@@ -10,6 +10,7 @@ export const FILTER_CREATED_DOG = "FILTER_CREATED_DOG"
 export const FILTER_BY_WEIGHT = 'FILTER_BY_WEIGHT'
 export const GET_ALL_MOODS = "GET_ALL_MOODS"
 export const FILTER_BY_MOODS = 'FILTER_BY_MOODS'
+export const POST_DOG = 'POST_DOG'
 
 
 
@@ -24,10 +25,20 @@ export const getAllDogs = () => {
                 payload
             })
         }
+    
 
-        
-        
     }
+    export const postCharacter = (payload) => {
+        return async function(dispatch) {
+            let json = await axios.post('http://localhost:3001/dogs', payload)
+            console.log(json)
+            return json;
+
+        }
+
+    }
+
+
     export const getDog = (id) => {
 
     return async function ( dispatch ){
@@ -84,7 +95,7 @@ export const getAllDogs = () => {
         }
     }
 
-
+                    // que te traiga SOLO EL name SI TIENE QUE SER ASÍ
     export const getMoods = () => {
         return async function (dispatch) {
             let json = await axios('http://localhost:3001/temperament')

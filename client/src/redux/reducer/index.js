@@ -1,4 +1,4 @@
-import { FILTER_ABC, FILTER_BY_MOOD, FILTER_BY_WEIGHT, FILTER_CREATED_DOG, GET_ALL_DOGS, GET_ALL_MOODS, GET_DOG_DETAIL, GET_DOG_NAME } from "../actions";
+import { FILTER_ABC, FILTER_BY_MOOD, FILTER_BY_WEIGHT, FILTER_CREATED_DOG, GET_ALL_DOGS, GET_ALL_MOODS, GET_DOG_DETAIL, GET_DOG_NAME, POST_DOG } from "../actions";
 
 const initialState = {
     dogs : [],
@@ -26,6 +26,7 @@ const rootReducer = (state = initialState , action) => {
             ...state,
             dogs: action.payload
         }
+
 
         case FILTER_ABC : 
         const  filterAbcDogs = action.payload === 'asc'? 
@@ -90,6 +91,11 @@ const rootReducer = (state = initialState , action) => {
         return {
             ...state,
             dogs : filteredMood
+        }
+
+        case POST_DOG : 
+        return {
+            ...state
         }
 
         default : return state

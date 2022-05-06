@@ -29,7 +29,7 @@ const Nav = () => {
         <nav className="navMenu">
                 <a>    <Link to ="/home"> Home </Link> </a>
                 <a>    <Link to= "/dogs">Crear Perro guau guau</Link> </a>
-                <button onClick={e => { handleClick(e) }}> Rewoof </button>
+                <button className="btn" onClick={e => { handleClick(e) }}> Rewoof </button>
                 {/* esta madre no esta funcionando en todas las rutas, ayudaaa
                 y tampoco manda nada cuando no encuentra al perro   */}
                 <SearchBar />

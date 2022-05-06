@@ -6,6 +6,7 @@ import { getAllDogs, filterAbc, filterCreatedDog, getMoods, filterByMoods, filte
 import Card from '../dogCard'
 import Paginated from "../Paginated";
 import '../Home/Home.css'
+import '../dogCard/dogCard.css'
 
 const Home = () => {
 
@@ -57,7 +58,9 @@ const Home = () => {
     }
 
     return (
-        <div>    
+        <div className="background">
+
+        <div >    
         <h1 className=" backGround ">
             WOOF WOOF HOME WOOF WOOF
         </h1>
@@ -65,7 +68,7 @@ const Home = () => {
 
         <Paginated currentDogs={currentDogs} allDogs={ allDogs.length } paginated= { paginated} />
         </h2>
-        <div>
+            <div >
 
             <label>ORDEN ALFABETICO?</label>
             <select onChange={e => handleAbcFilter(e)}>
@@ -89,7 +92,7 @@ const Home = () => {
                         
                     return (
                         <option value={e.name} key={e.id}>{e.name}</option>
-                    )
+                        )
                     })
                 }
             </select>
@@ -104,9 +107,7 @@ const Home = () => {
 
         </div>
 
-            <div>
-
-
+            <div className="container">
             {
                 pagedDogs?.map (e => {
                        return( 
@@ -116,9 +117,10 @@ const Home = () => {
                         </div>
                         
                         )})
-            }
+                    }
             </div>
     </div>
+                    </div>
                    )
 }
 

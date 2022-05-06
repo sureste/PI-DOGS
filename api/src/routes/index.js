@@ -43,7 +43,10 @@ const DbDogId = async (id) => {
     let dog = await Dogs.findByPk(id, {
         include : {
             model : Moods , 
-            attributes : ["name"]
+            attributes : ["name"],
+            through: {
+                attributes: []
+            }
 
         }
     })
@@ -90,6 +93,9 @@ const getAllDogs = async () => {
             include: {
                 model: Moods,
                 attributes: ["name"],
+                through:{
+                    attributes:[]
+                }
 
             }
         })
