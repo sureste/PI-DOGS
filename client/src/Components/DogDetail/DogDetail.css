@@ -1,0 +1,16 @@
+.general{
+    margin-top: 5%;
+    background-color: aquamarine;
+    display: flex;
+    ;
+}
+
+.dogdetail{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 1%;
+}
+.dogdetail > h1 {
+    align-self: center;
+}

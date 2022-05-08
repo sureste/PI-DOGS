@@ -1,0 +1,37 @@
+.bck{
+    /* background-color: brown; */
+    background-size:cover;
+    height: 1300px;
+}
+
+.contenedor{
+    margin-top: 5%;
+    background-color: yellow;
+    height: 50%;
+    display: flex ;
+    justify-content: space-around;
+    
+
+}
+
+
+.formStyle{
+    background-color: red;
+    width: 800px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.errorStyle{
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: space-around;
+}
+.errorStyle > h1 {
+    justify-self: flex-start ;
+}

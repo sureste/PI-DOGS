@@ -1,0 +1,7 @@
+.main_bar{
+    background-color: blueviolet;
+    display: flex;
+    height: 150;
+    justify-content: space-around;
+    align-content: center;
+}

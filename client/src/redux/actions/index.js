@@ -55,8 +55,7 @@ export const getAllDogs = () => {
     export const getDogName = (name) => {
         return async function(dispatch){
             let json = await axios(`http://localhost:3001/dogs/?name=${name}`)
-
-
+            
             const payload = await json.data
             return dispatch({
                 type : GET_DOG_NAME,

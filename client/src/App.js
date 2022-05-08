@@ -8,9 +8,9 @@ import CreateDog from './Components/createDog';
 function App() {
   return (
     <div className="App">
-    <Nav/> 
-      <Route path="/" exact component={LandingPage}/>
+    {/* <Nav/>  */}
     <Switch>
+      <Route path="/" exact component={LandingPage}/>
       <Route path="/home" exact component={Home}/>
       <Route path="/home/:id"  component={DogDetail} />
       <Route path="/dogs" component={CreateDog} />

@@ -34,13 +34,21 @@
 .navStyle {
     background: #272727;
     font-family: "Montserrat", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
 }
 .navMenu {
-    display: inline;
+    display: flex;
+    justify-content: space-between;
+    background-color: red;
+    width: 95%;
+
     /* top: 50%;
     left: 50%; */
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    /* -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
 }
 
 .navMenu a {

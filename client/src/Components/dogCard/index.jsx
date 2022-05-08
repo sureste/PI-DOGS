@@ -9,17 +9,23 @@ export default function Card({ name, image ,mood, weight_min,weight_max, id, }){
                 //mati enseña en una clase como evitar que se vea la busqueda anterior, recuerda, en una clase, creo fue de movies
                 // es importante mejorar ese detalle después
                 //tambien checa como quitar el azul ese de m
-        <div className="card">
+        <div  className="card">
+
+
+            <div className="cardImg" >
+            <img src={image} alt="woof" width="200" height="250" />
+            </div>
+
+            <div className="cardInfo">
             <Link to={`/home/${id}`}> 
             <h2 className="dogTitle" >{name}</h2>
             </Link>
-            <img src={image} alt="woof" width="200" height="250" />
-            <div className="cardContent">
-            <h4>Peso min : {weight_min}</h4>
-            <h4>Peso max : {weight_max}</h4>
-            <h3>{mood}</h3>
+            <h2>{mood}</h2>
+            <h3>Peso minimo : {weight_min}  / Peso maximo : {weight_max} </h3>
+            </div>
+
+
             </div>
             
-        </div>
     )
 }

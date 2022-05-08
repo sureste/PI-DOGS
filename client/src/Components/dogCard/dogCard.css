@@ -1,28 +1,21 @@
-
-
-.background{
-    /* background-color: aquamarine; */
+.card{
+background-color: rebeccapurple;
+width: 800px;
+height: 300px;
+display: flex;
+justify-content: space-between;
 }
 
+.cardImg{
+    margin-left: 1%;
+    align-self: center;
+    width: 200px;
+}
 
-.container {
-    /* background-color: red; */
+.cardInfo{
+    background-color: red;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-}
-
-.container>a:link {
-    text-decoration: none;
-    color: #000000;
-}
-
-.container>a:visited {
-    text-decoration: none;
-    color: #000000;
-}
-
-.container>a:hover {
-    color: #2419a3;
-    text-decoration: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 550px;
 }

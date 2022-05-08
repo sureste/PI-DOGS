@@ -186,7 +186,7 @@ const getMood = async () => {
         
         // console.log("=====================",search, 'MIRAME SOY EL SEARCH')
         
-        // Solo te manda un mood
+        
         let [newDog,created] = await Dogs.findOrCreate({
             where : {
                 name,
