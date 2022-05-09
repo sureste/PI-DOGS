@@ -13,7 +13,7 @@ export default function Card({ name, image ,mood, weight_min,weight_max, id, }){
 
 
             <div className="cardImg" >
-            <img src={image} alt="woof" width="200" height="250" />
+                <img src={image ? image : image = "https://www.nextdayflyers.com/blog/wp-content/uploads/2014/10/Pet-Flyer-1-768x1024.jpg"} alt="woof" width="200" height="250" />
             </div>
 
             <div className="cardInfo">

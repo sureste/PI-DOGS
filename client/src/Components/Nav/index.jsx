@@ -11,6 +11,10 @@ const Nav = () => {
 
     const dispatch = useDispatch();
 
+    const handleDogs = (e) => {
+        dispatch(getAllDogs())
+    }
+
     
     useEffect(() => {
         dispatch(getAllDogs())
@@ -21,8 +25,11 @@ const Nav = () => {
         <div className="navStyle">
 
         <nav className="navMenu">
-                <a>    <Link to ="/home"> Home </Link> </a>
-                <a>    <Link to= "/dogs">Crear Perro </Link> </a>
+                <h1> <Link to ="/home"> 
+                <button onClick={(e) => handleDogs(e)}> Home </button> 
+                </Link> </h1>
+
+                <h1>  <Link to= "/dogs">Crear Perro </Link> </h1>
         <SearchBar />
         </nav>
         </div>

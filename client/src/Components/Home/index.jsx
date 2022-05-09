@@ -38,20 +38,22 @@ const Home = () => {
 
     return (
         <div className="background">
-        <Nav />
+        <Nav  />
                
-        <FilterBar setCurrentPage={setCurrentPage} setOrder ={setOrder} />
+        <FilterBar  setCurrentPage={setCurrentPage} setOrder ={setOrder} />
         
-        <Paginated currentDogs={currentDogs} allDogs={ allDogs.length } paginated= { paginated} />   
+        <Paginated   currentDogs={currentDogs} allDogs={ allDogs.length } paginated= { paginated} />   
 
             <div className="container">
-                {
-                pagedDogs?.map (e => {
+                {  pagedDogs.length?
+                pagedDogs.map (e => {
                        return( 
-                        <div>
-                         <Card name={e.name} image={e.image} mood={e.mood} id={e.id} weight_min={e.weight_min} weight_max={e.weight_max} key={e.id} />
+                        <div key={e.id+'div'} >
+                               <Card name={e.name} image={e.image} mood={!e.createdInDb ? e.mood : e.Moods.map(d => d.name + " ")} id={e.id} weight_min={e.weight_min} weight_max={e.weight_max} key={e.id} />
                         </div>
-                        )})}
+                        )}) : 
+                        <div> <h1> Cagando...</h1> </div>
+                        }
             </div>
    
         </div>

@@ -11,6 +11,8 @@ export const FILTER_BY_WEIGHT = 'FILTER_BY_WEIGHT'
 export const GET_ALL_MOODS = "GET_ALL_MOODS"
 export const FILTER_BY_MOODS = 'FILTER_BY_MOODS'
 export const POST_DOG = 'POST_DOG'
+export const CLEAR_DETAIL = "CLEAR_DETAIL"
+export const LOADING_PAGE = 'LOADING_PAGE'
 
 
 
@@ -54,15 +56,21 @@ export const getAllDogs = () => {
 
     export const getDogName = (name) => {
         return async function(dispatch){
-            let json = await axios(`http://localhost:3001/dogs/?name=${name}`)
-            
-            const payload = await json.data
-            return dispatch({
-                type : GET_DOG_NAME,
-                payload
-            })
+            try{
+
+                let json = await axios(`http://localhost:3001/dogs/?name=${name}`)
+                
+                const payload = await json.data
+                return dispatch({
+                    type : GET_DOG_NAME,
+                    payload
+                })
+            }
+            catch(e){
+                alert('Guau guau no encontrado')
+            }
         }
-    }
+        }
 
     export const filterByMoods = (payload) =>  {
         return {
@@ -105,7 +113,12 @@ export const getAllDogs = () => {
                 payload
             })
         }
+    }
 
+    export const clearDetail = () => {
+        return {
+            type : CLEAR_DETAIL
+        }
     }
 
 

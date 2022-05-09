@@ -34,8 +34,12 @@ module.exports = (sequelize) => {
 },
 
     lifeTime: {
-      type: DataTypes.DECIMAL
+      type: DataTypes.INTEGER
 },
+
+  image : {
+    type :DataTypes.STRING,
+  },
 
   createdInDb : {
    type:  DataTypes.BOOLEAN,

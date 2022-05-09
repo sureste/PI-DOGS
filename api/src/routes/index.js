@@ -176,24 +176,25 @@ const getMood = async () => {
         
     }
     
-    const createDog = async (name,height,weight_min,weight_max,lifeTime,mood) => {
-    try {
-    //     const search = await Dogs.findOne({
-    //         where : {name : name}})
-    //  if(search){ 
-    //      throw Error ("El perro ya existe")
-    //     }
-        
-        // console.log("=====================",search, 'MIRAME SOY EL SEARCH')
-        
-        
+    const createDog = async (name,height,weight_min,weight_max, lifeTime ,mood) => {
+        //     const search = await Dogs.findOne({
+            //         where : {name : name}})
+            //  if(search){ 
+                //      throw Error ("El perro ya existe")
+                //     }
+                
+                // console.log("=====================",search, 'MIRAME SOY EL SEARCH')
+                  
+                try {
         let [newDog,created] = await Dogs.findOrCreate({
+
             where : {
                 name,
                 height,
                 weight_min,
                 weight_max,
-                lifeTime
+                lifeTime,
+                
             }})
             console.log("WOOF WOOF WOOF WOOF WOOF",created) //regresar un 304 si ya estaba creado
             let moods = await Moods.findAll({
@@ -299,7 +300,7 @@ router.post("/dogs", async(req,res) => {
         // console.log(search)
         return res.send("ya hay guau guau").status(304)
     }
-            createDog(name,height,weight_min,weight_max,lifeTime,mood)
+            createDog(name,height,weight_min,weight_max,lifeTime, mood)
             
             return res.status(201).send("Guau guau creado con croquetas")
             

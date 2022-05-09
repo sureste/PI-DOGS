@@ -49,29 +49,29 @@ const FilterBar = ({setCurrentPage , setOrder}) => {
             <div>
             <label>ORDEN ALFABETICO?</label>
             <select onChange={e => handleAbcFilter(e)}>
-                <option value='asc'>Ascendente </option>
-                <option value='desc'>Descendente </option>
+                <option key={1} value='asc'>Ascendente </option>
+                <option key={2} value='desc'>Descendente </option>
             </select>
             </div>
 
             <div>
             <label>Created?</label>
             <select onChange={e => handleFilterCreated(e)}>
-                <option value='all'>All</option>
-                <option value='created'>Created</option>
-                <option value='api'>Api</option>
+                <option key={1} value='all'>All</option>
+                <option key={2} value='created'>Created</option>
+                <option key={3} value='api'>Api</option>
             </select>
             </div>
 
             <div>
             <label>MOOOOOOODS</label>
             <select onChange={e => handleMoodFilter(e)}>
-                <option value="all">protomood</option>
+                <option key={1+'e'} value="all">protomood</option>
                 {
                     moodsName.map(e => {
                         
                         return (
-                            <option value={e.name} key={e.id}>{e.name}</option>
+                            <option value={e.name} key={e.id} >{e.name}</option>
                             )
                         })
                     }
@@ -81,9 +81,9 @@ const FilterBar = ({setCurrentPage , setOrder}) => {
             <div>
             <label>Weight</label>
             <select onChange={e => handleWeightFilter(e)}>
-                <option value='all'>All</option>
-                <option value='min'>Ligero a pesao</option>
-                <option value='max'> Pesao a ligero</option>
+                <option key={1} value='all'>All</option>
+                <option key={2} value='min'>Ligero a pesao</option>
+                <option key={3} value='max'> Pesao a ligero</option>
             </select>
             </div>
 

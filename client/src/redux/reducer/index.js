@@ -1,10 +1,11 @@
-import { FILTER_ABC, FILTER_BY_MOOD, FILTER_BY_WEIGHT, FILTER_CREATED_DOG, GET_ALL_DOGS, GET_ALL_MOODS, GET_DOG_DETAIL, GET_DOG_NAME, POST_DOG } from "../actions";
+import { CLEAR_DETAIL, FILTER_ABC, FILTER_BY_MOOD, FILTER_BY_WEIGHT, FILTER_CREATED_DOG, GET_ALL_DOGS, GET_ALL_MOODS, GET_DOG_DETAIL, GET_DOG_NAME, POST_DOG } from "../actions";
 
 const initialState = {
     dogs : [],
     dogDetail : {},
     allDogs : [],
-    allMoods : []
+    allMoods : [],
+    loading : true
 };
 
 const rootReducer = (state = initialState , action) => {
@@ -91,6 +92,13 @@ const rootReducer = (state = initialState , action) => {
         return {
             ...state,
             dogs : filteredMood
+        }
+
+        case CLEAR_DETAIL : {
+            return {
+                ...state ,
+                dogDetail : {}
+            }
         }
 
         case POST_DOG : 

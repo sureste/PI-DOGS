@@ -67,6 +67,7 @@ const CreateDog = () => {
         weight_min:0,
         weight_max:0,
         lifeTime:0,
+        image : "",
         mood:[]
     })
 
@@ -121,6 +122,7 @@ const CreateDog = () => {
     // hacer un handle que los borre del estado
 
     return(
+
         <div className='bck'>
             
             <Link to ="/home">
@@ -146,7 +148,6 @@ const CreateDog = () => {
         <div>
             <label>Altura</label>
             <input className='inputStyle' type='number' value={input.height} name='height' onChange = { e => handleChange(e)}  />
-
         </div>
 
         <div>
@@ -163,6 +164,11 @@ const CreateDog = () => {
         <div>
             <label>Tiempo de vida </label>
             <input className='inputStyle' type='number' value={input.lifeTime} name="lifeTime" onChange={e => handleChange(e)} />
+        </div>
+        <div>
+
+            <label>Imagen </label>
+            <input className='inputStyle' type='text' value={input.image} name="image" onChange={e => handleChange(e)} />
         </div>
 
 
@@ -237,7 +243,7 @@ const CreateDog = () => {
                 <h2>
                 {errors.lifeTime && (<p> {errors.lifeTime} </p>)}
                 </h2>
-                        </div>
+                    </div>
 
                 </div>
                 </div>
