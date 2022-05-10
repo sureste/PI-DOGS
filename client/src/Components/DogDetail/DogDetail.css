@@ -2,15 +2,26 @@
     margin-top: 5%;
     background-color: aquamarine;
     display: flex;
-    ;
+    background-color: #a99985;
+    opacity: 90%;
+    border: 4px inset #1C6EA4;
+        border-radius: 9px 27px 18px 11px;
 }
 
 .dogdetail{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     margin-left: 1%;
+    width: 100%;
+    color: #252323 ;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        font-size: 35px;
+            letter-spacing: 1.8px;
+            word-spacing: 1.6px;
+    /* background-color: red; */
 }
 .dogdetail > h1 {
-    align-self: center;
+    /* align-self: center; */
 }

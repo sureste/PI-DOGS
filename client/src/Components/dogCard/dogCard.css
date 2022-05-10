@@ -37,6 +37,26 @@ border: 4px inset #1C6EA4;
 
 .titleStyle{
     background-color: #f5f1ed;
+    /* font-family: "Montserrat", sans-serif */
+    text-decoration: none;
+    justify-content: space-around;
+        color: #252323;
+        font-size: 0.9em;
+        text-transform: uppercase;
+        font-weight: 500;
     
     
+}
+
+.titleStyle > a {
+    justify-content: space-around;
+        color: #252323;
+        text-decoration: none;
+        font-size: 1.0em;
+        text-transform: uppercase;
+        font-weight: 450;
+        /* display: inline-block; */
+        width: 80px;
+        -webkit-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
 }

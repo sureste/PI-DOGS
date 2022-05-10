@@ -11,7 +11,6 @@ export default function Card({ name, image ,mood, weight_min,weight_max, id, }){
                 //tambien checa como quitar el azul ese de m
         <div  className="card">
 
-
             <div className="cardImg" >
                 <img src={image ? image : image = "https://www.nextdayflyers.com/blog/wp-content/uploads/2014/10/Pet-Flyer-1-768x1024.jpg"} alt="woof" width="200" height="250" />
             </div>
@@ -19,7 +18,7 @@ export default function Card({ name, image ,mood, weight_min,weight_max, id, }){
             <div className="cardInfo">
                 <div className="titleStyle">
             <Link to={`/home/${id}`}> 
-            <h1 className="dogTitle" >{name}</h1>
+            <h1 >{name}</h1>
             </Link>
                 </div>
             <h2>{mood}</h2>

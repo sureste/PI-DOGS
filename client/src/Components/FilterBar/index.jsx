@@ -48,7 +48,7 @@ const FilterBar = ({setCurrentPage , setOrder}) => {
         <div className="main_bar">
             <div>
             <h3>Orden Alfabetico</h3>
-            <select className="selectStyle" onChange={e => handleAbcFilter(e)}>
+            <select className="moodStyle" onChange={e => handleAbcFilter(e)}>
                 <option key={1} value='asc'>Ascendente </option>
                 <option key={2} value='desc'>Descendente </option>
             </select>

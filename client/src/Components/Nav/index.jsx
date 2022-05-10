@@ -27,9 +27,9 @@ const Nav = ({setCurrentPage}) => {
         <div className="navStyle">
 
         <nav className="navMenu">
-                <h1> <Link to ="/home"> 
-                <a onClick={(e) => handleDogs(e)}> Home </a> 
-                </Link> </h1>
+                 <Link to ="/home"> 
+                <h1 onClick={(e) => handleDogs(e)}> Home </h1> 
+                </Link> 
 
                 <h1>  <Link to= "/dogs">Crear Perro </Link> </h1>
         <SearchBar />

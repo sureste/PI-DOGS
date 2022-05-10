@@ -140,52 +140,37 @@ const CreateDog = () => {
 
         <div>
             <h3>Nombre:</h3>
-            <input className='inputStyle' type='text' value={input.name} name="name"  onChange={e => handleChange(e)} />
-               <h2>
-                {errors.name && (<p> {errors.name} </p>)}
-               </h2>
+            <input className='numInput' type='text' value={input.name} name="name"  onChange={e => handleChange(e)} />
 
         </div>
 
         <div>
             <h3>Altura</h3>
-            <input className='inputStyle' type='number' value={input.height} name='height' onChange = { e => handleChange(e)}  />
-                <h2>
-                {errors.height && (<p> {errors.height} </p>)}
-                </h2>
+            <input className='numInput' type='number' value={input.height} name='height' onChange = { e => handleChange(e)}  />
         </div>
 
         <div>
         <h3>Peso minimo </h3>
-        <input className='inputStyle' type='number' value={input.weight_min} name="weight_min" onChange={e => handleChange(e)} />
-                <h2>
-                {errors.weight_min && (<p> {errors.weight_min} </p>)}
-                </h2>
+        <input className='numInput' type='number' value={input.weight_min} name="weight_min" onChange={e => handleChange(e)} />
         </div>
 
         <div>
         <h3>Peso Maximo </h3>
-        <input className='inputStyle' type='number' value={input.weight_max} name="weight_max" onChange={e => handleChange(e)} />
-            <h2>
-            {errors.weight_max && (<p> {errors.weight_max} </p>)}
-            </h2>
+        <input className='numInput' type='number' value={input.weight_max} name="weight_max" onChange={e => handleChange(e)} />
         </div>
 
 
         <div>
             <h3>Tiempo de vida </h3>
-            <input className='inputStyle' type='number' value={input.lifeTime} name="lifeTime" onChange={e => handleChange(e)} />
-                <h2>
-                {errors.lifeTime && (<p> {errors.lifeTime} </p>)}
-                </h2>
+            <input className='numInput' type='number' value={input.lifeTime} name="lifeTime" onChange={e => handleChange(e)} />
         </div>
         <div>
 
             {/* <label>Imagen </label>
-            <input className='inputStyle' type='text' value={input.image} name="image" onChange={e => handleChange(e)} /> */}
+            <input className='numInput' type='text' value={input.image} name="image" onChange={e => handleChange(e)} /> */}
         </div>
             <h2>Temperamentos</h2>
-            <select  onChange={e => handleSelect(e)} >
+            <select  className='moodStyle' onChange={e => handleSelect(e)} >
                 <option value="all">protomood</option>
                 {
                     allMoods.map(e => {
@@ -211,31 +196,51 @@ const CreateDog = () => {
                 input.lifeTime <= 0 ||
                 !input.mood.length
                 ?
-                <p>No hago nada wey</p>
+                <h3>Guau Guau no puede ser creado aún</h3>
                 :
                 <button type='submit'>Crear guau guau</button>
                 
             }
                 </form>
          
-                  
+                  <div className='moodDiv'>
                         {input.mood.map(d => {
                             return (
                                 
                                 <div>
-                            <p> {d} </p>
-                            <button onClick={() => handleErase(d)}>X</button>
+                            <h2> {d} </h2>
+                            <button className='searchBtn' onClick={() => handleErase(d)}>X</button>
                             </div>
                                 )
                             })
                         }
+                        </div>
                         
                 <div className='errorStyle'>
                 <h1>Errores :</h1>
                 <div>
                 <div className='errorStyle'> {/* toca corregir esto porfa*/}
 
-                <h1>Hola Buenas Tardes</h1>
+            <h2>
+             {errors.name && (<p> {errors.name} </p>)}
+            </h2>
+
+            <h2>
+            {errors.height && (<p> {errors.height} </p>)}
+            </h2>
+
+            <h2>
+            {errors.weight_min && (<p> {errors.weight_min} </p>)}
+            </h2>
+
+            <h2>
+            {errors.weight_max && (<p> {errors.weight_max} </p>)}
+            </h2>
+            
+            <h2>
+            {errors.lifeTime && (<p> {errors.lifeTime} </p>)}
+            </h2>
+                <h1>Esto debe quedar vacío para crear tu guau guau</h1>
 
                 </div>
 
