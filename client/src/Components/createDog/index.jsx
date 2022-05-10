@@ -123,16 +123,15 @@ const CreateDog = () => {
 
     return(
 
-        <div className='bck'>
+        <div className='background'>
             
             <Link to ="/home">
-                <button>
+                <button className='btn'>
                     Volver
                 </button>
             </Link>
             <h1>
-                WUAU WUAU CREAR WUAU WUAU WUAU AAAAH
-                AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHH
+                Crear Guau Guau 
             </h1>
 
         <div className='contenedor'>
@@ -140,41 +139,53 @@ const CreateDog = () => {
             <form className='formStyle' onSubmit={e => handleSubmit(e)} >
 
         <div>
-            <label>Nombre:</label>
+            <h3>Nombre:</h3>
             <input className='inputStyle' type='text' value={input.name} name="name"  onChange={e => handleChange(e)} />
+               <h2>
+                {errors.name && (<p> {errors.name} </p>)}
+               </h2>
 
         </div>
 
         <div>
-            <label>Altura</label>
+            <h3>Altura</h3>
             <input className='inputStyle' type='number' value={input.height} name='height' onChange = { e => handleChange(e)}  />
+                <h2>
+                {errors.height && (<p> {errors.height} </p>)}
+                </h2>
         </div>
 
         <div>
-        <label>Peso minimo </label>
+        <h3>Peso minimo </h3>
         <input className='inputStyle' type='number' value={input.weight_min} name="weight_min" onChange={e => handleChange(e)} />
+                <h2>
+                {errors.weight_min && (<p> {errors.weight_min} </p>)}
+                </h2>
         </div>
 
         <div>
-        <label>Peso Maximo </label>
+        <h3>Peso Maximo </h3>
         <input className='inputStyle' type='number' value={input.weight_max} name="weight_max" onChange={e => handleChange(e)} />
+            <h2>
+            {errors.weight_max && (<p> {errors.weight_max} </p>)}
+            </h2>
         </div>
 
 
         <div>
-            <label>Tiempo de vida </label>
+            <h3>Tiempo de vida </h3>
             <input className='inputStyle' type='number' value={input.lifeTime} name="lifeTime" onChange={e => handleChange(e)} />
+                <h2>
+                {errors.lifeTime && (<p> {errors.lifeTime} </p>)}
+                </h2>
         </div>
         <div>
 
-            <label>Imagen </label>
-            <input className='inputStyle' type='text' value={input.image} name="image" onChange={e => handleChange(e)} />
+            {/* <label>Imagen </label>
+            <input className='inputStyle' type='text' value={input.image} name="image" onChange={e => handleChange(e)} /> */}
         </div>
-
-
-
-            <label>MOOOOOOODS</label>
-            <select onChange={e => handleSelect(e)} >
+            <h2>Temperamentos</h2>
+            <select  onChange={e => handleSelect(e)} >
                 <option value="all">protomood</option>
                 {
                     allMoods.map(e => {
@@ -222,28 +233,11 @@ const CreateDog = () => {
                 <div className='errorStyle'>
                 <h1>Errores :</h1>
                 <div>
-                        <div className='errorStyle'> {/* toca corregir esto porfa*/}
+                <div className='errorStyle'> {/* toca corregir esto porfa*/}
 
-               <h2>
-                {errors.name && (<p> {errors.name} </p>)}
-               </h2>
+                <h1>Hola Buenas Tardes</h1>
 
-                <h2>
-                {errors.height && (<p> {errors.height} </p>)}
-                </h2>
-
-                <h2>
-                {errors.weight_min && (<p> {errors.weight_min} </p>)}
-                </h2>
-
-                <h2>
-                {errors.weight_max && (<p> {errors.weight_max} </p>)}
-                </h2>
-
-                <h2>
-                {errors.lifeTime && (<p> {errors.lifeTime} </p>)}
-                </h2>
-                    </div>
+                </div>
 
                 </div>
                 </div>

@@ -7,12 +7,14 @@ import SearchBar from "../SearchBar";
 import '../Nav/Nav.css'
 
 
-const Nav = () => {
+const Nav = ({setCurrentPage}) => {
 
     const dispatch = useDispatch();
 
     const handleDogs = (e) => {
-        dispatch(getAllDogs())
+        dispatch(getAllDogs()
+        )
+        setCurrentPage(1)
     }
 
     
@@ -26,7 +28,7 @@ const Nav = () => {
 
         <nav className="navMenu">
                 <h1> <Link to ="/home"> 
-                <button onClick={(e) => handleDogs(e)}> Home </button> 
+                <a onClick={(e) => handleDogs(e)}> Home </a> 
                 </Link> </h1>
 
                 <h1>  <Link to= "/dogs">Crear Perro </Link> </h1>

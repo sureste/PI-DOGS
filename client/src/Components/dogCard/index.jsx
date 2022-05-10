@@ -17,11 +17,13 @@ export default function Card({ name, image ,mood, weight_min,weight_max, id, }){
             </div>
 
             <div className="cardInfo">
+                <div className="titleStyle">
             <Link to={`/home/${id}`}> 
-            <h2 className="dogTitle" >{name}</h2>
+            <h1 className="dogTitle" >{name}</h1>
             </Link>
+                </div>
             <h2>{mood}</h2>
-            <h3>Peso minimo : {weight_min}  / Peso maximo : {weight_max} </h3>
+            <h2>Peso minimo : {weight_min}  / Peso maximo : {weight_max} </h2>
             </div>
 
 

@@ -47,16 +47,16 @@ const FilterBar = ({setCurrentPage , setOrder}) => {
     return (
         <div className="main_bar">
             <div>
-            <label>ORDEN ALFABETICO?</label>
-            <select onChange={e => handleAbcFilter(e)}>
+            <h3>Orden Alfabetico</h3>
+            <select className="selectStyle" onChange={e => handleAbcFilter(e)}>
                 <option key={1} value='asc'>Ascendente </option>
                 <option key={2} value='desc'>Descendente </option>
             </select>
             </div>
 
             <div>
-            <label>Created?</label>
-            <select onChange={e => handleFilterCreated(e)}>
+            <h3>Creados</h3>
+            <select  className="selectStyle" onChange={e => handleFilterCreated(e)}>
                 <option key={1} value='all'>All</option>
                 <option key={2} value='created'>Created</option>
                 <option key={3} value='api'>Api</option>
@@ -64,8 +64,8 @@ const FilterBar = ({setCurrentPage , setOrder}) => {
             </div>
 
             <div>
-            <label>MOOOOOOODS</label>
-            <select onChange={e => handleMoodFilter(e)}>
+            <h3>Temperamentos</h3>
+            <select className="selectStyle" onChange={e => handleMoodFilter(e)}>
                 <option key={1+'e'} value="all">protomood</option>
                 {
                     moodsName.map(e => {
@@ -79,8 +79,8 @@ const FilterBar = ({setCurrentPage , setOrder}) => {
             </div>
 
             <div>
-            <label>Weight</label>
-            <select onChange={e => handleWeightFilter(e)}>
+            <h3>Por peso</h3>
+            <select className="selectStyle" onChange={e => handleWeightFilter(e)}>
                 <option key={1} value='all'>All</option>
                 <option key={2} value='min'>Ligero a pesao</option>
                 <option key={3} value='max'> Pesao a ligero</option>

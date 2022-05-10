@@ -1,18 +1,18 @@
 .background{
-    /* background-image: url('https://cdn.pixabay.com/photo/2022/03/27/21/59/dog-7096207_960_720.jpg'); */
+    background-image: url('https://img.freepik.com/free-vector/cute-animal-pattern-background-wallpaper-paw-print-vector-illustration_53876-146422.jpg?t=st=1652130402~exp=1652131002~hmac=14a262bbfdc3538a93b492e13284bd01addeeba2f882a49cd787102476f12fa7&w=1380');
     background-size: cover;
-    height: 100vh;
+    height: 1600px;
   
     
 }
 
 .container {
     /* background-color: red; */
-    margin-top: 2.5%;
+    margin-top: 0.5%;
     margin-left: 3%;
     margin-right: 3%;
     display: flex;
-    height: 100%;
+    height: 1350px;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;

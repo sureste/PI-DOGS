@@ -1,7 +1,24 @@
 .main_bar{
-    background-color: blueviolet;
+    background: #70798c;
     display: flex;
-    height: 150;
+    height: 60px;
     justify-content: space-around;
     align-content: center;
+}
+
+.selectStyle {
+    appearance: none;
+        /* Additional resets for further consistency */
+        background-color: #f5f1ed;
+        border: none;
+        border-radius: 5%;
+        padding: 0 1em 0 0;
+        margin: 0;
+        width: 100%;
+        font-family: inherit;
+        font-size: 18px;
+        cursor: inherit;
+        line-height: inherit;
+
+        
 }

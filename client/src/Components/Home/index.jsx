@@ -38,7 +38,7 @@ const Home = () => {
 
     return (
         <div className="background">
-        <Nav  />
+        <Nav  setCurrentPage={setCurrentPage} />
                
         <FilterBar  setCurrentPage={setCurrentPage} setOrder ={setOrder} />
         

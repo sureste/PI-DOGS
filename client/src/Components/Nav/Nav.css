@@ -7,32 +7,35 @@
     box-sizing: border-box;
 }
 
-.btn{
-    background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
-    background-color:#ffec64;
-    border:2px solid #ffaa22;
-    display:inline-block;
-    cursor:pointer;
-    color:#333333;
-    font-family:Arial;
-    font-size:15px;
-    font-weight:bold;
-    padding:10px 24px;
-    text-decoration:none;
-    text-shadow:0px 1px 0px #ffee66;
-    border-radius : 15px 
+.btn {
+    box-shadow: 3px 4px 0px 0px #4d3634;
+    background: linear-gradient(to bottom, #ffb700 5%, #f0e738 100%);
+    background-color: #ffb700;
+    border-radius: 23px;
+    border: 2px solid #0f0d02;
+    display: inline-block;
+    cursor: pointer;
+    color: #000000;
+    font-family: Arial;
+    font-size: 16px;
+    padding: 4px 31px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #000000;
 }
+
 .btn:hover {
-    background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
-    background-color: #ffab23;
+    background: linear-gradient(to bottom, #f0e738 5%, #ffb700 100%);
+    background-color: #f0e738;
 }
 
 .btn:active {
     position: relative;
     top: 1px;
 }
+
+
 .navStyle {
-    background: #272727;
+    background: #252323;
     font-family: "Montserrat", sans-serif;
     display: flex;
     justify-content: center;
@@ -42,13 +45,9 @@
 .navMenu {
     display: flex;
     justify-content: space-between;
-    background-color: red;
+    /* background-color: red; */
     width: 95%;
 
-    /* top: 50%;
-    left: 50%; */
-    /* -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%); */
 }
 
 .navMenu a {
