@@ -6,9 +6,7 @@ export default function Card({ name, image ,mood, weight_min,weight_max, id, }){
 
 
     return (
-                //mati enseña en una clase como evitar que se vea la busqueda anterior, recuerda, en una clase, creo fue de movies
-                // es importante mejorar ese detalle después
-                //tambien checa como quitar el azul ese de m
+
         <div  className="card">
 
             <div className="cardImg" >

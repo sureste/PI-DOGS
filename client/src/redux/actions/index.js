@@ -18,7 +18,7 @@ export const LOADING_PAGE = 'LOADING_PAGE'
 
 export const getAllDogs = () => {
 
-    return async function (dispatch) {
+    return async function (dispatch) {  //Ruta getAllDogs del back
         let json = await axios('http://localhost:3001/dogs')
 
             const payload = await  json.data
@@ -30,8 +30,8 @@ export const getAllDogs = () => {
     
 
     }
-    export const postCharacter = (payload) => {
-        return async function(dispatch) {
+    export const postDog = (payload) => {
+        return async function() {
             let json = await axios.post('http://localhost:3001/dogs', payload)
             console.log(json)
             return json;
@@ -102,7 +102,6 @@ export const getAllDogs = () => {
         }
     }
 
-                    // que te traiga SOLO EL name SI TIENE QUE SER ASÍ
     export const getMoods = () => {
         return async function (dispatch) {
             let json = await axios('http://localhost:3001/temperament')

@@ -6,39 +6,13 @@ const { Dogs , Moods } = require('../db')
 const Op = Sequelize.Op
 
 const axios = require('axios');
-const e = require('express');
 const router = Router();
 const {API_KEY} = process.env
 
-// Configurar los routers
-// Ejemplo: router.use('/auth', authRouter);
 
 
-// const getDbDogs = async () => {
-//     return await Dogs.findAll({
-//         include : {
-//             model : Moods,
-//             attributes : ["name"],
-            
-//         }
-//     })
-// }
 
-// const getDogsByDbName = async (name) => {
-
-//     const search = await Dogs.findAll({where : {name :{
-//         [Op.like] : `%${name}%`}},
-//         include : {
-//             model: Moods,
-//             attributes: ["name"],
-//         },
-
-//     })
-//     return search
-// }
-
-
-const DbDogId = async (id) => {
+const DbDogId = async (id) => {   //Busco perros de mi Db por ID
 
     let dog = await Dogs.findByPk(id, {
         include : {
@@ -51,6 +25,7 @@ const DbDogId = async (id) => {
         }
     })
 
+
     if(dog === null){
         throw Error ("Perro no encontrato, WOOF WOOF WOOOF")
     } 
@@ -59,22 +34,9 @@ const DbDogId = async (id) => {
     return dog
 }
 
-// const getApiDogs = async () => {
-//     const api = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
-//     const perrosApi = await api.data.map(e => {
-//         return {
-//             image: e.image.url,
-//             name: e.name,
-//             mood: e.temperament,
-//             weight: e.weight.metric,
-//             id: e.id
-//         }
-//             })
-//         return perrosApi    
 
-//         }
 
-const getAllDogs = async () => {
+const getAllDogs = async () => {  // Llamo a todos los perros de la ambos lados
 
     const api = await axios.get(`https://api.thedogapi.com/v1/breeds`);
     const perrosApi = api.data.map(e => {
@@ -125,7 +87,7 @@ const getAllDogs = async () => {
 
 
 
-const getDog = async (id) => {
+const getDog = async (id) => {  //Busco perros de la API por id 
     let dogs = await getAllDogs()
 
     let foundDog = await dogs.find(d => d.id === parseInt(id))
@@ -139,7 +101,7 @@ const getDog = async (id) => {
     
 }
 
-const getMood = async () => {
+const getMood = async () => { // Busco todos los humores y los guardo en mi Db
     let mood = await Moods.findAll()
     if(mood.length === 0){
 
@@ -177,15 +139,10 @@ const getMood = async () => {
     }
     
     const createDog = async (name,height,weight_min,weight_max, lifeTime ,mood) => {
-        //     const search = await Dogs.findOne({
-            //         where : {name : name}})
-            //  if(search){ 
-                //      throw Error ("El perro ya existe")
-                //     }
-                
-                // console.log("=====================",search, 'MIRAME SOY EL SEARCH')
                   
-                try {
+        try {
+
+
         let [newDog,created] = await Dogs.findOrCreate({
 
             where : {
@@ -196,7 +153,7 @@ const getMood = async () => {
                 lifeTime,
                 
             }})
-            console.log("WOOF WOOF WOOF WOOF WOOF",created) //regresar un 304 si ya estaba creado
+            console.log("WOOF WOOF WOOF WOOF WOOF",created) 
             let moods = await Moods.findAll({
                 where : {name : mood}
             })
@@ -205,16 +162,14 @@ const getMood = async () => {
             console.log(moods2 , "==esto es el moods2=")
             newDog.addMoods(moods2)
             console.log('====================')
-            return "Perro creado con exito, AUUUUUUUUUUUU "
+            return "Perro creado con exito"
         } catch (error) {
-            //checar si el control de errores sirve cuando la data no es enviada como un array de strings
             console.error(error)
         }
         }
 
 
-    //encontrar manera de controlar errores mejor aquí 
-router.get('/temperament', async(req,res) => {
+router.get('/temperament', async(req,res) => { 
     try{
         let a = await getMood()
     res.status(200).json(a)
@@ -225,11 +180,9 @@ router.get('/temperament', async(req,res) => {
 })
 
 
-//meter control de errores para conseguir que solo puedan meter un tipo de request
 
 
 router.get('/dogs', async(req,res) => {
-    // let {id} = req.params
     let{name} = req.query
     try {
         
@@ -237,18 +190,12 @@ router.get('/dogs', async(req,res) => {
             
             let dogs = await getAllDogs()
             let search = await dogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()))
-            // let search = await getDogsByDbName(name)
-            // let searchApi = await getDogsByName(name)  
-            // if(!search && !searchApi){
                 if(!search.length){
                     return res.status(404).send("No hay woof woof sniff sniff pffft")
                 }
                 return res.status(200).json(search)         
                 }
                 
-                //el get de todos los perros ya completo, faltan detalles
-                // let perrosApi = await getApiDogs()
-                // let perrosDb = await getDbDogs()
                 let perros = await getAllDogs() 
                 
                 return res.status(200).json(perros)
@@ -263,9 +210,6 @@ router.get('/dogs', async(req,res) => {
         router.get("/dogs/:id", async(req,res) => {
             let {id} = req.params
 
-            //cuando metes algo no tomado como valido de id UUID manda un error y ta bien pero 
-            //podrías ver como controlarlo para mayor control sobre la pagina
-
             try {
                    if (id.length > 5) {
                         let dbDog = await DbDogId(id)
@@ -273,7 +217,6 @@ router.get('/dogs', async(req,res) => {
                     }
 
                     let foundDog = await getDog(id)
-                    // console.log(foundDog, "aquitoy")
                     return res.status(200).json(foundDog)
                 
             } catch (error) {
@@ -297,16 +240,12 @@ router.post("/dogs", async(req,res) => {
         where: { name: name }
     })
     if (search) {
-        // console.log(search)
         return res.send("ya hay guau guau").status(304)
     }
             createDog(name,height,weight_min,weight_max,lifeTime, mood)
             
             return res.status(201).send("Guau guau creado con croquetas")
             
-        // } catch(e){
-        // }
-
 })
 
 

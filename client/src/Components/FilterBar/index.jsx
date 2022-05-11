@@ -11,7 +11,8 @@ const FilterBar = ({setCurrentPage , setOrder}) => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        dispatch(getAllDogs());
+        dispatch(getAllDogs())
+        setCurrentPage(1);
     }
 
     const handleAbcFilter = (e) => {

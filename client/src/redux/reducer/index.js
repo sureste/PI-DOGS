@@ -5,7 +5,6 @@ const initialState = {
     dogDetail : {},
     allDogs : [],
     allMoods : [],
-    loading : true
 };
 
 const rootReducer = (state = initialState , action) => {
@@ -23,7 +22,6 @@ const rootReducer = (state = initialState , action) => {
         }
 
         case GET_DOG_NAME : return {
-            // esto probablemente va a tirar error
             ...state,
             dogs: action.payload
         }
@@ -62,7 +60,7 @@ const rootReducer = (state = initialState , action) => {
         }
 
         case FILTER_BY_WEIGHT : 
-        const allDogsW = state.allDogs.filter( d => d.weight_min)
+        const allDogsW = state.allDogs.filter( d => d.weight_min) //excluyo al que no tiene weight_min
         console.log(action.payload, "soy el PAYLOAD")
         const filterWeight = action.payload === 'min'?  allDogsW.sort((a , b) =>{
             return a.weight_min - b.weight_min
@@ -83,9 +81,7 @@ const rootReducer = (state = initialState , action) => {
 
         case FILTER_BY_MOOD : 
         const allDogs2 = state.allDogs
-                                                     //aguas aquí
         const filteredMood = action.payload === 'all'?  allDogs : allDogs2.filter(e => {
-            // console.log(allDogs2, "======================soy un algo")
             return e.mood?.includes(action.payload)
         })
         

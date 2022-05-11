@@ -3,6 +3,8 @@ import { getDog , clearDetail } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Nav from '../Nav'
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import '../DogDetail/DogDetail.css'
 
@@ -11,6 +13,7 @@ const DogDetail = () => {
     const dispatch = useDispatch();
     const dog = useSelector((state) => state.dogDetail)
     const {id} = useParams(); 
+    const [currentPage, setCurrentPage] = useState(1)
 
     useEffect(() => {
         dispatch(getDog(id))
@@ -19,7 +22,7 @@ const DogDetail = () => {
 
         return(
             <div className="background">
-                
+                <Nav setCurrentPage={setCurrentPage}/>
                 <Link to="/home">
                     <button className='btn'>
                         Volver

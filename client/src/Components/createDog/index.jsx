@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import { getMoods, postCharacter } from '../../redux/actions';
+import { getMoods, postDog } from '../../redux/actions';
 import '../createDog/createDog.css'
+
+
 const validate = (input) => {
     let errors = {}
     if(!input.name){
@@ -98,7 +100,7 @@ const CreateDog = () => {
     const handleSubmit = (e) =>{
         e.preventDefault()
         console.log(input)
-        dispatch(postCharacter(input))
+        dispatch(postDog(input))
 
         alert("Guau guau creado con croquetas")
         setInput({
@@ -198,17 +200,16 @@ const CreateDog = () => {
                 ?
                 <h3>Guau Guau no puede ser creado aún</h3>
                 :
-                <button type='submit'>Crear guau guau</button>
+                <button className='btn' type='submit'>Crear guau guau</button>
                 
             }
                 </form>
          
                   <div className='moodDiv'>
-                        {input.mood.map(d => {
+                        {input.mood.map((d , i) => {
                             return (
-                                
-                                <div>
-                            <h2> {d} </h2>
+                                <div key={i++}>
+                            <h2 > {d} </h2>
                             <button className='searchBtn' onClick={() => handleErase(d)}>X</button>
                             </div>
                                 )

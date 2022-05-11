@@ -11,7 +11,7 @@ const Nav = ({setCurrentPage}) => {
 
     const dispatch = useDispatch();
 
-    const handleDogs = (e) => {
+    const handleDogs = () => {
         dispatch(getAllDogs()
         )
         setCurrentPage(1)
@@ -28,7 +28,7 @@ const Nav = ({setCurrentPage}) => {
 
         <nav className="navMenu">
                  <Link to ="/home"> 
-                <h1 onClick={(e) => handleDogs(e)}> Home </h1> 
+                <h1 onClick={(e) => handleDogs()}> Home </h1> 
                 </Link> 
 
                 <h1>  <Link to= "/dogs">Crear Perro </Link> </h1>

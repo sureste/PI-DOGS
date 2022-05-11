@@ -19,7 +19,7 @@ const Home = () => {
     const lastI = currentPage * currentDogs
     const firstI = lastI - currentDogs
     const pagedDogs = allDogs.slice(firstI,lastI)
-
+          
     const [order, setOrder] = useState('')
     const paginated = (pageN) => {
         setCurrentPage(pageN)
@@ -40,9 +40,9 @@ const Home = () => {
         <div className="background">
         <Nav  setCurrentPage={setCurrentPage} />
                
-        <FilterBar  setCurrentPage={setCurrentPage} setOrder ={setOrder} />
+        <FilterBar  setCurrentPage={setCurrentPage}  setOrder ={setOrder} />
         
-        <Paginated   currentDogs={currentDogs} allDogs={ allDogs.length } paginated= { paginated} />   
+        <Paginated   setCurrentPage={setCurrentPage} currentPage={currentPage} currentDogs={currentDogs} allDogs={ allDogs.length } paginated= { paginated} />   
 
             <div className="container">
                 {  pagedDogs.length?
