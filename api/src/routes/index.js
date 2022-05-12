@@ -12,6 +12,97 @@ const {API_KEY} = process.env
 
 
 
+
+
+
+const getAllDogs = async () => {  // Llamo a todos los perros de la ambos lados
+    
+    const api = await axios.get(`https://api.thedogapi.com/v1/breeds`);
+    const perrosApi = api.data.map(e => {
+        return {
+            image : e.image.url,
+            name : e.name,
+            mood : e.temperament,
+            weight_min : parseInt(e.weight.imperial.split("-")[0]),
+            weight_max : parseInt(e.weight.imperial.split("-")[1]),
+            height: e.height.imperial,
+            id : e.id,
+            lifeTime : e.life_span
+        }
+    })
+    let perrosDb = await Dogs.findAll({
+            include: {
+                model: Moods,
+                attributes: ["name"],
+                through:{
+                    attributes:[]
+                }
+                
+            }
+        })
+        
+        let perros = perrosApi.concat(perrosDb)
+        
+        
+        return perros
+    }
+
+    
+    const getMood = async () => { // Busco todos los humores y los guardo en mi Db
+        let mood = await Moods.findAll()
+        if(mood.length === 0){
+    
+            const api = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
+            // console.log(api)
+            let perros =  api.data.map (el => el.temperament)
+            
+            // console.log("[" +moods+"]")
+            
+            
+            
+        perros = perros.join()
+    
+    
+        perros = perros.split(",")
+    
+        perros = perros.map(e => e.trim())
+    
+        
+        perros.forEach( async (e) => {
+            
+            if(e.length > 0){
+                await Moods.findOrCreate({
+                 where : {name : e}
+                })
+                
+            }
+    
+        })
+             mood = await Moods.findAll()
+    
+            }
+            return  mood
+            
+        }
+
+        
+    // const getDogsByName = async (name) => {
+        //     //perros     [{},{},{}]    
+        //         // name.toLowerCase()
+        //         // let dogs = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}?api_key=${API_KEY}`)
+        
+        //         // return dogs
+        //         let dogs  = await getApiDogs();
+        //         let dbDogs = await getDbDogs();
+        
+        //         // let perros = [...dogs , dbDogs]
+        
+//         let search = await dogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()))
+
+
+//         return search
+// }
+
 const DbDogId = async (id) => {   //Busco perros de mi Db por ID
 
     let dog = await Dogs.findByPk(id, {
@@ -35,108 +126,20 @@ const DbDogId = async (id) => {   //Busco perros de mi Db por ID
 }
 
 
-
-const getAllDogs = async () => {  // Llamo a todos los perros de la ambos lados
-
-    const api = await axios.get(`https://api.thedogapi.com/v1/breeds`);
-    const perrosApi = api.data.map(e => {
-        return {
-            image : e.image.url,
-            name : e.name,
-            mood : e.temperament,
-            weight_min : parseInt(e.weight.imperial.split("-")[0]),
-            weight_max : parseInt(e.weight.imperial.split("-")[1]),
-            height: e.height.imperial,
-            id : e.id,
-            lifeTime : e.life_span
-        }
-             })
-        let perrosDb = await Dogs.findAll({
-            include: {
-                model: Moods,
-                attributes: ["name"],
-                through:{
-                    attributes:[]
-                }
-
-            }
-        })
-
-        let perros = perrosApi.concat(perrosDb)
-
-
-    return perros
-}
-
-// const getDogsByName = async (name) => {
-//     //perros     [{},{},{}]    
-//         // name.toLowerCase()
-//         // let dogs = await axios.get(`https://api.thedogapi.com/v1/breeds/search?q=${name}?api_key=${API_KEY}`)
-
-//         // return dogs
-//         let dogs  = await getApiDogs();
-//         let dbDogs = await getDbDogs();
-
-//         // let perros = [...dogs , dbDogs]
-        
-//         let search = await dogs.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()))
-
-        
-//         return search
-// }
-
-
-
 const getDog = async (id) => {  //Busco perros de la API por id 
     let dogs = await getAllDogs()
-
+    
     let foundDog = await dogs.find(d => d.id === parseInt(id))
     console.log(foundDog)
     if(!foundDog){
         throw Error("No hay guau guau api")
     }
-
- return foundDog
-
+    
+    return foundDog
+    
     
 }
 
-const getMood = async () => { // Busco todos los humores y los guardo en mi Db
-    let mood = await Moods.findAll()
-    if(mood.length === 0){
-
-        const api = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
-        // console.log(api)
-        let perros =  api.data.map (el => el.temperament)
-        
-        // console.log("[" +moods+"]")
-        
-        
-        
-    perros = perros.join()
-
-
-    perros = perros.split(",")
-
-    perros = perros.map(e => e.trim())
-
-    
-    perros.forEach( async (e) => {
-        
-        if(e.length > 0){
-            await Moods.findOrCreate({
-             where : {name : e}
-            })
-            
-        }
-
-    })
-         mood = await Moods.findAll()
-
-        }
-        return  mood
-        
-    }
     
     const createDog = async (name,height,weight_min,weight_max, lifeTime ,mood) => {
                   
